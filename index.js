@@ -30,5 +30,5 @@ app.use(cors({
 require('./api')
 
 http.listen(process.env.SERVER_PORT, () => {
-  console.log('listening on *:3000');
+  console.log(`listening on *:${process.env.SERVER_PORT}`);
 })
