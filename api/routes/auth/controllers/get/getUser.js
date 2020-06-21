@@ -1,9 +1,5 @@
 module.exports = async (req, res) => {
-  const id = req.params.id
-  const body = {
-    id,
-    name: 'Vitalii',
-    login: 'nevvord'
-  }
-  res.send({body, msg: "Пользователь найден"})
+  const user = await db.Users.findOne({_id: req.user_id})
+  delete user._doc.password
+  res.send({user, msg: "Авторизация успешна"})
 }

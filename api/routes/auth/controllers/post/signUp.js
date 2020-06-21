@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt')
 
 module.exports = async (req, res) => {
   const { login, password, email } = req.body
+  const findUser = await db.Users.findOne({login})
+  if (findUser) return res.status(401).send({msg: "Пользователь с таким логином существует"})
   const salt = await bcrypt.genSalt(18)
   if (!salt) return res.status(500).send({msg: "Неудалось сгенерировать соль", row: 8})
   const hash = await bcrypt.hash(password.toString(), salt)

@@ -12,4 +12,5 @@ module.exports = async (req, res) => {
   const token = await jwt.sign({_id: user._id}, process.env.SECRET_KEY)
   if (!token) return res.status(500).send({msg: "Ошибка сервера"})
   res.send({token, msg: "Авторизация успешна"})
+  console.log('signin')
 }
