@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { SECRET_KEY } = require('dotenv').config()
+require('dotenv').config()
 
 module.exports = async (req, res, next) => {
   if (!req.headers.authorization) return res.status(401).send({msg: "Нет токена"})
